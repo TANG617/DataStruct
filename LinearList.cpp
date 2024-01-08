@@ -5,7 +5,8 @@
 #include "iostream"
 using namespace std;
 
-template <typename DataType> class NodeType{
+template <typename DataType>
+class NodeType{
 public:    
     DataType Data;
     NodeType * prevNode;
@@ -22,13 +23,13 @@ public:
         this->nextNode = nullptr;
     }
 
-
 };
 
-template<typename DataType> class NodeListType{
+template<typename DataType>
+class NodeListType{
 public:
     NodeType<DataType> *headNode, *tailNode;
-    int Size = 0;
+    int Size = 1;
 
     NodeListType(NodeType<DataType>  &RootNode){
         headNode = &RootNode;
@@ -83,6 +84,25 @@ public:
             Size--;
         }
     }
+    void Detele(NodeType<DataType> *node){
+        NodeType<DataType> *deleteNode = node;
+        if(deleteNode != nullptr){
+            if(deleteNode->nextNode != nullptr){
+                deleteNode->nextNode->prevNode = deleteNode->prevNode;
+            }
+            else{
+                tailNode = deleteNode->prevNode;
+            }
+
+            if(deleteNode->prevNode != nullptr){
+                deleteNode->prevNode->nextNode = deleteNode->nextNode;
+            }
+            else{
+                headNode = deleteNode->nextNode;
+            }
+            Size--;
+        }
+    }
 
     void Traversal() {
         NodeType<DataType> *cursor = headNode;
@@ -97,17 +117,74 @@ public:
 
     }
 };
+
+template<typename DataType>
+class StackType : public NodeListType<DataType>{
+public:
+    NodeType<DataType> *top,*bottom;
+    StackType(NodeType<DataType>& RootNode) : NodeListType<DataType>(RootNode) {
+        top = this->tailNode;
+        bottom = this->tailNode;
+    }
+
+    NodeType<DataType> *pop(){
+        NodeType<DataType> *temp;
+        temp = top;
+        this->Detele(top);
+        return temp;
+    }
+
+    void Push(NodeType<DataType> &Node){
+        this->TailInsert(Node);
+        top = &Node;
+    }
+};
+
+template<typename DataType>
+class QueueType : public NodeListType<DataType>{
+public:
+    NodeType<DataType> *front,*rear;
+    QueueType(NodeType<DataType> & RootNode) : NodeListType<DataType>(RootNode){
+        front = this->headNode;
+        rear = this->tailNode;
+    }
+
+    void Enter(NodeType<DataType> & Node){
+        this->TailInsert(Node);
+        rear = &Node;
+    }
+
+    NodeType<DataType> Exit(){
+        NodeType<DataType> *temp;
+        temp = front;
+        this->Detele(front);
+        return temp;
+    }
+};
+//TODO:String
+template<typename DataType>
+class StringType : public NodeListType<DataType> {
+public:
+};
+
 int main()
 {
     NodeType RootNode = NodeType<int>(1);
     NodeType NewNode2 = NodeType<int>(2);
     NodeType NewNode3 = NodeType<int>(3);
-    NodeListType NodeList = NodeListType<int>(RootNode);
-    NodeList.TailInsert(NewNode2);
-    NodeList.TailInsert(NewNode3);
-    NodeList.Traversal();
+//    NodeListType NodeList = NodeListType<int>(RootNode);
+//    NodeList.TailInsert(NewNode2);
+//    NodeList.TailInsert(NewNode3);
+//    NodeList.Traversal();
 //    cout<<NodeList.index(2)->Data;
-    cout<<endl;
-    NodeList.Detele(0);
-    NodeList.Traversal();
+//    cout<<endl;
+//    NodeList.Detele(0);
+//    NodeList.Traversal();
+
+    StackType Stack = StackType<int>(RootNode);
+    Stack.Push(NewNode2);
+//    cout<<endl<<Stack.pop()->Data<<endl<<endl;
+    Stack.Push(NewNode3);
+    cout<<"Size"<<Stack.Size<<endl;
+    Stack.Traversal();
 }
