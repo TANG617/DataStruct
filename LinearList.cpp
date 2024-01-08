@@ -27,41 +27,59 @@ public:
 
 template<typename DataType> class NodeListType{
 public:
-    NodeType<DataType> HeadNode, TailNode;
+    NodeType<DataType> *headNode, *tailNode;
     int Size = 0;
 //    NodeType<DataType> cursorNode;
 
     NodeListType(NodeType<DataType>  &RootNode){
-        HeadNode = RootNode;
-        TailNode = RootNode;
-//        HeadNode.nextNode = &TailNode;
-//        TailNode.prevNode = &HeadNode;
-//        cursorNode = HeadNode;
+        headNode = &RootNode;
+        tailNode = &RootNode;
+//        headNode.nextNode = &tailNode;
+//        tailNode.prevNode = &headNode;
+//        cursorNode = headNode;
     }
 
 
     void HeadInsert(NodeType<DataType>  &Node){
-        this->Size++;
-        HeadNode.nextNode->prevNode = &Node;
-        Node.nextNode = HeadNode.nextNode;
-        HeadNode.nextNode = &Node;
-        Node.prevNode = &HeadNode;
+        Node.prevNode = headNode;
+        Node.nextNode = headNode->nextNode;
+
+        if(headNode->nextNode!= nullptr) headNode->nextNode->prevNode = &Node;
+        headNode->nextNode = &Node;
+        Size++;
     }
 
     void TailInsert(NodeType<DataType>  &Node){
-        this->Size++;
-        if(Size == 1) HeadNode.nextNode = &Node;
-        TailNode.nextNode = &Node;
-        Node.prevNode = &TailNode;
-        TailNode = Node;
+        Node.prevNode = tailNode;
+        tailNode->nextNode = &Node;
+        tailNode = &Node;
+        Size++;
+    }
+
+    NodeType<DataType>* index(int i){
+        NodeType<DataType> *cursor = headNode;
+        int index = 0;
+//        cout<<cursor->Data<<endl;
+        do{
+            cursor = cursor->nextNode;
+            index++;
+            if(index == i) return cursor;
+//            cout<<cursor->Data<<endl;
+        }while(cursor->nextNode != nullptr);
+        return nullptr;
+    }
+
+    void Detele(){
+
     }
 
     void Traversal() {
-        NodeType<DataType> cursor = HeadNode;
-        while(cursor.nextNode != nullptr){
-            cout<<cursor.Data<<endl;
-            cursor = *cursor.nextNode;
-        }
+        NodeType<DataType> *cursor = headNode;
+        cout<<cursor->Data<<endl;
+        do{
+            cursor = cursor->nextNode;
+            cout<<cursor->Data<<endl;
+        }while(cursor->nextNode != nullptr);
     }
 
     NodeType<DataType> Search(NodeType<DataType>  &Node){
@@ -76,5 +94,6 @@ int main()
     NodeListType NodeList = NodeListType<int>(RootNode);
     NodeList.TailInsert(NewNode2);
     NodeList.TailInsert(NewNode3);
-    NodeList.Traversal();
+//    NodeList.Traversal();
+    cout<<NodeList.index(2)->Data;
 }
