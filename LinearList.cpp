@@ -29,14 +29,10 @@ template<typename DataType> class NodeListType{
 public:
     NodeType<DataType> *headNode, *tailNode;
     int Size = 0;
-//    NodeType<DataType> cursorNode;
 
     NodeListType(NodeType<DataType>  &RootNode){
         headNode = &RootNode;
         tailNode = &RootNode;
-//        headNode.nextNode = &tailNode;
-//        tailNode.prevNode = &headNode;
-//        cursorNode = headNode;
     }
 
 
@@ -59,18 +55,33 @@ public:
     NodeType<DataType>* index(int i){
         NodeType<DataType> *cursor = headNode;
         int index = 0;
-//        cout<<cursor->Data<<endl;
+        if(index == i) return cursor;
         do{
             cursor = cursor->nextNode;
             index++;
             if(index == i) return cursor;
-//            cout<<cursor->Data<<endl;
         }while(cursor->nextNode != nullptr);
         return nullptr;
     }
 
-    void Detele(){
+    void Detele(int i){
+        NodeType<DataType> *deleteNode = this->index(i);
+        if(deleteNode != nullptr){
+            if(deleteNode->nextNode != nullptr){
+                deleteNode->nextNode->prevNode = deleteNode->prevNode;
+            }
+            else{
+                tailNode = deleteNode->prevNode;
+            }
 
+            if(deleteNode->prevNode != nullptr){
+                deleteNode->prevNode->nextNode = deleteNode->nextNode;
+            }
+            else{
+                headNode = deleteNode->nextNode;
+            }
+            Size--;
+        }
     }
 
     void Traversal() {
@@ -94,6 +105,9 @@ int main()
     NodeListType NodeList = NodeListType<int>(RootNode);
     NodeList.TailInsert(NewNode2);
     NodeList.TailInsert(NewNode3);
-//    NodeList.Traversal();
-    cout<<NodeList.index(2)->Data;
+    NodeList.Traversal();
+//    cout<<NodeList.index(2)->Data;
+    cout<<endl;
+    NodeList.Detele(0);
+    NodeList.Traversal();
 }
