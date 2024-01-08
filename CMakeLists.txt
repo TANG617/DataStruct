@@ -3,5 +3,7 @@ project(DataStruct)
 
 set(CMAKE_CXX_STANDARD 23)
 
+
 add_executable(DataStruct main.cpp)
 add_executable(DataStruct-LinearList LinearList.cpp)
+add_executable(DataStruct-BiTree BiTree.cpp)

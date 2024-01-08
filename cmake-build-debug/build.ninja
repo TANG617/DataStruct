@@ -102,6 +102,37 @@ build DataStruct-LinearList: CXX_EXECUTABLE_LINKER__DataStruct-LinearList_Debug 
   TARGET_FILE = DataStruct-LinearList
   TARGET_PDB = DataStruct-LinearList.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target DataStruct-BiTree
+
+
+#############################################
+# Order-only phony target for DataStruct-BiTree
+
+build cmake_object_order_depends_target_DataStruct-BiTree: phony || CMakeFiles/DataStruct-BiTree.dir
+
+build CMakeFiles/DataStruct-BiTree.dir/BiTree.cpp.o: CXX_COMPILER__DataStruct-BiTree_unscanned_Debug /Users/timli/CLionProjects/DataStruct/BiTree.cpp || cmake_object_order_depends_target_DataStruct-BiTree
+  DEP_FILE = CMakeFiles/DataStruct-BiTree.dir/BiTree.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/DataStruct-BiTree.dir
+  OBJECT_FILE_DIR = CMakeFiles/DataStruct-BiTree.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target DataStruct-BiTree
+
+
+#############################################
+# Link the executable DataStruct-BiTree
+
+build DataStruct-BiTree: CXX_EXECUTABLE_LINKER__DataStruct-BiTree_Debug CMakeFiles/DataStruct-BiTree.dir/BiTree.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  OBJECT_DIR = CMakeFiles/DataStruct-BiTree.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = DataStruct-BiTree
+  TARGET_PDB = DataStruct-BiTree.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -136,7 +167,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/timli/CLionProjects/DataStruct/cmake-build-debug
 
-build all: phony DataStruct DataStruct-LinearList
+build all: phony DataStruct DataStruct-LinearList DataStruct-BiTree
 
 # =============================================================================
 # Built-in targets
