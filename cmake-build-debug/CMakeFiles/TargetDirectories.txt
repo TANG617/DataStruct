@@ -1,0 +1,4 @@
+/Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/DataStruct.dir
+/Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/DataStruct-LinearList.dir
+/Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/rebuild_cache.dir
