@@ -41,97 +41,128 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /Users/timli/CLionProjects/DataStruct/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target DataStruct
+# Object build statements for EXECUTABLE target LinearList
 
 
 #############################################
-# Order-only phony target for DataStruct
+# Order-only phony target for LinearList
 
-build cmake_object_order_depends_target_DataStruct: phony || CMakeFiles/DataStruct.dir
+build cmake_object_order_depends_target_LinearList: phony || CMakeFiles/LinearList.dir
 
-build CMakeFiles/DataStruct.dir/main.cpp.o: CXX_COMPILER__DataStruct_unscanned_Debug /Users/timli/CLionProjects/DataStruct/main.cpp || cmake_object_order_depends_target_DataStruct
-  DEP_FILE = CMakeFiles/DataStruct.dir/main.cpp.o.d
+build CMakeFiles/LinearList.dir/LinearList.cpp.o: CXX_COMPILER__LinearList_unscanned_Debug /Users/timli/CLionProjects/DataStruct/LinearList.cpp || cmake_object_order_depends_target_LinearList
+  DEP_FILE = CMakeFiles/LinearList.dir/LinearList.cpp.o.d
   FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/DataStruct.dir
-  OBJECT_FILE_DIR = CMakeFiles/DataStruct.dir
+  OBJECT_DIR = CMakeFiles/LinearList.dir
+  OBJECT_FILE_DIR = CMakeFiles/LinearList.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target DataStruct
+# Link build statements for EXECUTABLE target LinearList
 
 
 #############################################
-# Link the executable DataStruct
+# Link the executable LinearList
 
-build DataStruct: CXX_EXECUTABLE_LINKER__DataStruct_Debug CMakeFiles/DataStruct.dir/main.cpp.o
+build LinearList: CXX_EXECUTABLE_LINKER__LinearList_Debug CMakeFiles/LinearList.dir/LinearList.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
-  OBJECT_DIR = CMakeFiles/DataStruct.dir
+  OBJECT_DIR = CMakeFiles/LinearList.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = DataStruct
-  TARGET_PDB = DataStruct.dbg
+  TARGET_FILE = LinearList
+  TARGET_PDB = LinearList.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target DataStruct-LinearList
+# Object build statements for EXECUTABLE target BiTree
 
 
 #############################################
-# Order-only phony target for DataStruct-LinearList
+# Order-only phony target for BiTree
 
-build cmake_object_order_depends_target_DataStruct-LinearList: phony || CMakeFiles/DataStruct-LinearList.dir
+build cmake_object_order_depends_target_BiTree: phony || CMakeFiles/BiTree.dir
 
-build CMakeFiles/DataStruct-LinearList.dir/LinearList.cpp.o: CXX_COMPILER__DataStruct-LinearList_unscanned_Debug /Users/timli/CLionProjects/DataStruct/LinearList.cpp || cmake_object_order_depends_target_DataStruct-LinearList
-  DEP_FILE = CMakeFiles/DataStruct-LinearList.dir/LinearList.cpp.o.d
+build CMakeFiles/BiTree.dir/BiTree.cpp.o: CXX_COMPILER__BiTree_unscanned_Debug /Users/timli/CLionProjects/DataStruct/BiTree.cpp || cmake_object_order_depends_target_BiTree
+  DEP_FILE = CMakeFiles/BiTree.dir/BiTree.cpp.o.d
   FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/DataStruct-LinearList.dir
-  OBJECT_FILE_DIR = CMakeFiles/DataStruct-LinearList.dir
+  OBJECT_DIR = CMakeFiles/BiTree.dir
+  OBJECT_FILE_DIR = CMakeFiles/BiTree.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target DataStruct-LinearList
+# Link build statements for EXECUTABLE target BiTree
 
 
 #############################################
-# Link the executable DataStruct-LinearList
+# Link the executable BiTree
 
-build DataStruct-LinearList: CXX_EXECUTABLE_LINKER__DataStruct-LinearList_Debug CMakeFiles/DataStruct-LinearList.dir/LinearList.cpp.o
+build BiTree: CXX_EXECUTABLE_LINKER__BiTree_Debug CMakeFiles/BiTree.dir/BiTree.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
-  OBJECT_DIR = CMakeFiles/DataStruct-LinearList.dir
+  OBJECT_DIR = CMakeFiles/BiTree.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = DataStruct-LinearList
-  TARGET_PDB = DataStruct-LinearList.dbg
+  TARGET_FILE = BiTree
+  TARGET_PDB = BiTree.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target DataStruct-BiTree
+# Object build statements for EXECUTABLE target Tree
 
 
 #############################################
-# Order-only phony target for DataStruct-BiTree
+# Order-only phony target for Tree
 
-build cmake_object_order_depends_target_DataStruct-BiTree: phony || CMakeFiles/DataStruct-BiTree.dir
+build cmake_object_order_depends_target_Tree: phony || CMakeFiles/Tree.dir
 
-build CMakeFiles/DataStruct-BiTree.dir/BiTree.cpp.o: CXX_COMPILER__DataStruct-BiTree_unscanned_Debug /Users/timli/CLionProjects/DataStruct/BiTree.cpp || cmake_object_order_depends_target_DataStruct-BiTree
-  DEP_FILE = CMakeFiles/DataStruct-BiTree.dir/BiTree.cpp.o.d
+build CMakeFiles/Tree.dir/Tree.cpp.o: CXX_COMPILER__Tree_unscanned_Debug /Users/timli/CLionProjects/DataStruct/Tree.cpp || cmake_object_order_depends_target_Tree
+  DEP_FILE = CMakeFiles/Tree.dir/Tree.cpp.o.d
   FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/DataStruct-BiTree.dir
-  OBJECT_FILE_DIR = CMakeFiles/DataStruct-BiTree.dir
+  OBJECT_DIR = CMakeFiles/Tree.dir
+  OBJECT_FILE_DIR = CMakeFiles/Tree.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target DataStruct-BiTree
+# Link build statements for EXECUTABLE target Tree
 
 
 #############################################
-# Link the executable DataStruct-BiTree
+# Link the executable Tree
 
-build DataStruct-BiTree: CXX_EXECUTABLE_LINKER__DataStruct-BiTree_Debug CMakeFiles/DataStruct-BiTree.dir/BiTree.cpp.o
+build Tree: CXX_EXECUTABLE_LINKER__Tree_Debug CMakeFiles/Tree.dir/Tree.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
-  OBJECT_DIR = CMakeFiles/DataStruct-BiTree.dir
+  OBJECT_DIR = CMakeFiles/Tree.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = DataStruct-BiTree
-  TARGET_PDB = DataStruct-BiTree.dbg
+  TARGET_FILE = Tree
+  TARGET_PDB = Tree.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target Graph
+
+
+#############################################
+# Order-only phony target for Graph
+
+build cmake_object_order_depends_target_Graph: phony || CMakeFiles/Graph.dir
+
+build CMakeFiles/Graph.dir/Graph.cpp.o: CXX_COMPILER__Graph_unscanned_Debug /Users/timli/CLionProjects/DataStruct/Graph.cpp || cmake_object_order_depends_target_Graph
+  DEP_FILE = CMakeFiles/Graph.dir/Graph.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Graph.dir
+  OBJECT_FILE_DIR = CMakeFiles/Graph.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Graph
+
+
+#############################################
+# Link the executable Graph
+
+build Graph: CXX_EXECUTABLE_LINKER__Graph_Debug CMakeFiles/Graph.dir/Graph.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  OBJECT_DIR = CMakeFiles/Graph.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Graph
+  TARGET_PDB = Graph.dbg
 
 
 #############################################
@@ -167,7 +198,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/timli/CLionProjects/DataStruct/cmake-build-debug
 
-build all: phony DataStruct DataStruct-LinearList DataStruct-BiTree
+build all: phony LinearList BiTree Tree Graph
 
 # =============================================================================
 # Built-in targets
