@@ -8,22 +8,22 @@ using namespace std;
 typedef enum {Undiscovered,Discovered,Visited}Vstatus;
 typedef enum {Undetermined,Tree,Cross,Forward,Backward}Estatus;
 
-template<typename DataType>
+
+
 class VertexType{
 public:
-    DataType Data;
+    int Data;
     int inDegree,outDegree;
     Vstatus Status;
-    VertexType(DataType t_Data):Data(t_Data),inDegree(0),outDegree(0),Status(Undiscovered){}
+    VertexType(int t_Data):Data(t_Data),inDegree(0),outDegree(0),Status(Undiscovered){}
 };
 
-template<typename DataType>
 class EdgeType{
 public:
-    DataType Data;
+    int Data;
     int Weight;
     Estatus Status;
-    EdgeType(DataType t_Data):Data(t_Data),Weight(0),Status(Undetermined){}
+    EdgeType(int t_Data):Data(t_Data),Weight(0),Status(Undetermined){}
 };
 
 class Graph{
@@ -34,52 +34,6 @@ public:
 
 };
 
-template<typename DataType>
-class GraphMatrix : public Graph{
-private:
-    vector<VertexType<DataType>> VertexList;
-    vector<vector<EdgeType<DataType>*>> EdgeAdjacencyMatrix;
-public:
-    GraphMatrix(){}
-    void InsertVertex(VertexType<DataType> &_Vertex){
-        VertexList.insert(VertexList.end()+1,_Vertex);
-//        VertexList.insert()
-        for(int i = 0; i<numVertex ;i++) EdgeAdjacencyMatrix[i].insert(EdgeAdjacencyMatrix[i].end(),NULL);
-        numVertex ++ ;
-        EdgeAdjacencyMatrix.insert(vector<EdgeType<DataType>*>(numVertex,numVertex,(EdgeType<DataType>*)NULL));
-    }
-    VertexType<DataType> RemoveVertex(int i){
-        for(int j=0;j<numVertex;j++){
-            delete EdgeAdjacencyMatrix[i][j];
-            VertexList[j].inDegree--;
-        }
-        EdgeAdjacencyMatrix.erase(EdgeAdjacencyMatrix.begin()+i);
-        for (int j = 0; j < numVertex; ++j) {
-            delete EdgeAdjacencyMatrix[j].erase(EdgeAdjacencyMatrix.begin()+i);
-            VertexList[j].outDegree--;
-        }
-        VertexType<DataType> tempVertex = VertexList(i);
-        VertexList.erase(VertexList.begin()+i);
-        return tempVertex;
-    }
-
-    void InsertEdge(EdgeType<DataType> &_Edge, int i,int j){
-        EdgeAdjacencyMatrix[i][j] = _Edge;
-        numEdge ++;
-        VertexList[i].outDegree++;
-        VertexList[j].inDegree++;
-    }
-    EdgeType<DataType> RemoveEdge(int i,int j){
-        EdgeType<DataType> tempEdge = EdgeAdjacencyMatrix(i,j);
-        delete EdgeAdjacencyMatrix[i][j];
-        EdgeAdjacencyMatrix[i][j] = NULL;
-        numEdge --;
-        VertexList[i].outDegree--;
-        VertexList[j].inDegree--;
-        return tempEdge;
-    }
-
-};
 
 
 
