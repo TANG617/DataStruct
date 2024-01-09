@@ -36,23 +36,14 @@ public:
     GraphType():numVertex(0),numEdge(0){}
 
 };
-//template<int MAX>
+
 class GraphAdjacencyMatrix : public GraphType{
 private:
     vector<VertexType> VertexList;
     vector<vector<EdgeType>> EdgeMatrix;
-//    VertexType VertexList[MAX];
-//    EdgeType EdgeMatrix[MAX][MAX];
+
 public:
-    GraphAdjacencyMatrix() {
-//        for (int i = 0; i < MAX; ++i) {
-//            VertexList[i] = VertexType();
-//            for (int j = 0; j < MAX; ++j) {
-////                new (&EdgeMatrix[i][j]) EdgeType(NULL);
-//                EdgeMatrix[i][j] = EdgeType();
-//            }
-//        }
-    }
+    GraphAdjacencyMatrix() {}
 
     void Push(EdgeType &_Edge){
 
@@ -93,20 +84,25 @@ public:
         }
 
         EdgeMatrix.erase(EdgeMatrix.begin()+VertexIndex);
-
-//        VertexList[VertexIndex].Exist = NotExisted;
-//        for (int i = 0; i < numVertex; ++i) {
-//            EdgeMatrix[VertexIndex][i].Exist = NotExisted;
-//            EdgeMatrix[i][VertexIndex].Exist = NotExisted;
-//        }
         numVertex--;
     }
-
-//    bool Exist(int FromIndex, int ToIndex){
-//        return EdgeMatrix[FromIndex][ToIndex].Data == -1 ? false : true;
-//    }
 };
 
+class GraphAdjacencyList : public GraphType{
+public:
+    vector<vector<VertexType>> AdjacencyList;
+    GraphAdjacencyList(){
+    }
+    void Push(VertexType &_Vertex){
+        vector<VertexType> _tempVec;
+        _tempVec.push_back(_Vertex);
+        AdjacencyList.push_back(_tempVec);
+    }
+
+    void Push(EdgeType &_Edge){
+        AdjacencyList[_Edge.FromIndex].push_back(AdjacencyList[_Edge.ToIndex][0]);
+    }
+};
 
 
 
@@ -119,9 +115,9 @@ int main(){
     EdgeType E1 = EdgeType(1,0,1);
     EdgeType E2 = EdgeType(2,1,2);
     EdgeType E3 = EdgeType(3,2,0);
-//
-//    GraphAdjacencyMatrix M = GraphAdjacencyMatrix<int>();
-    GraphAdjacencyMatrix M = GraphAdjacencyMatrix();
+
+//    GraphAdjacencyMatrix M = GraphAdjacencyMatrix();
+    GraphAdjacencyList M = GraphAdjacencyList();
     M.Push(V1);
     M.Push(V2);
     M.Push(V3);
@@ -129,8 +125,8 @@ int main(){
     M.Push(E1);
     M.Push(E2);
     M.Push(E3);
-
-    M.Remove(2);
-    M.Remove(0,1);
+//
+//    M.Remove(2);
+//    M.Remove(0,1);
 
 }
