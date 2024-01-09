@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 typedef enum {Undiscovered,Discovered,Visited}Vstatus;
@@ -34,6 +35,12 @@ public:
     int numVertex;
     int numEdge;
     GraphType():numVertex(0),numEdge(0){}
+    VertexType GetFirstVertex(){
+    }
+    VertexType GetNextVertex(){
+    }
+
+
 
 };
 
@@ -86,6 +93,38 @@ public:
         EdgeMatrix.erase(EdgeMatrix.begin()+VertexIndex);
         numVertex--;
     }
+
+    void Visit(VertexType _Vertex){
+        cout<<_Vertex.Data<<endl;
+    }
+
+    void BFS(int RootIndex){
+        queue <int> VertexIndexQueue;
+        for (int i = 0; i < numVertex; ++i) {
+            if(VertexList[i].Status == Undiscovered && EdgeMatrix[RootIndex][i].Data != -1)
+            {
+                VertexIndexQueue.push(i);
+
+
+            }
+        }
+        Visit(VertexList[RootIndex]);
+        VertexList[RootIndex].Status = Visited;
+
+        while(!VertexIndexQueue.empty()){
+            for (int i = 0; i < numVertex; ++i) {
+                if(VertexList[i].Status == Undiscovered && EdgeMatrix[VertexIndexQueue.front()][i].Data != -1)
+                {
+                    VertexIndexQueue.push(i);
+
+                }
+
+            }
+            Visit(VertexList[VertexIndexQueue.front()]);
+            VertexList[VertexIndexQueue.front()].Status = Visited;
+            VertexIndexQueue.pop();
+        }
+    }
 };
 
 class GraphAdjacencyList : public GraphType{
@@ -102,6 +141,8 @@ public:
     void Push(EdgeType &_Edge){
         AdjacencyList[_Edge.FromIndex].push_back(AdjacencyList[_Edge.ToIndex][0]);
     }
+
+    //TODO:func remove
 };
 
 
