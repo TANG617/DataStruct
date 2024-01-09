@@ -2,5 +2,6 @@
 /Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/BiTree.dir
 /Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/Tree.dir
 /Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/Graph.dir
+/Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/test.dir
 /Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/timli/CLionProjects/DataStruct/cmake-build-debug/CMakeFiles/rebuild_cache.dir
