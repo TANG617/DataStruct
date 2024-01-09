@@ -7,7 +7,6 @@ using namespace std;
 
 typedef enum {Undiscovered,Discovered,Visited}Vstatus;
 typedef enum {Undetermined,Tree,Cross,Forward,Backward}Estatus;
-typedef enum {Existed, NotExisted} Existance;
 
 
 
@@ -16,9 +15,8 @@ public:
     int Data;
     int inDegree,outDegree;
     Vstatus Status;
-    Existance Exist;
-    VertexType():Data(-1),inDegree(0),outDegree(0),Status(Undiscovered),Exist(NotExisted){}
-    VertexType(int t_Data):Data(t_Data),inDegree(0),outDegree(0),Status(Undiscovered),Exist(NotExisted){}
+    VertexType():Data(-1),inDegree(0),outDegree(0),Status(Undiscovered){}
+    VertexType(int t_Data):Data(t_Data),inDegree(0),outDegree(0),Status(Undiscovered){}
 };
 
 class EdgeType{
@@ -27,9 +25,8 @@ public:
     int Weight;
     int FromIndex,ToIndex;
     Estatus Status;
-    Existance Exist;
-    EdgeType():Data(-1),Weight(0),Status(Undetermined),FromIndex(-1),ToIndex(-1),Exist(NotExisted){}
-    EdgeType(int _Data,int _From,int _To):Data(_Data),Weight(0),Status(Undetermined),FromIndex(_From),ToIndex(_To),Exist(NotExisted){}
+    EdgeType():Data(-1),Weight(0),Status(Undetermined),FromIndex(-1),ToIndex(-1){}
+    EdgeType(int _Data,int _From,int _To):Data(_Data),Weight(0),Status(Undetermined),FromIndex(_From),ToIndex(_To){}
 };
 
 class GraphType{
@@ -39,49 +36,75 @@ public:
     GraphType():numVertex(0),numEdge(0){}
 
 };
-template<int MAX>
+//template<int MAX>
 class GraphAdjacencyMatrix : public GraphType{
 private:
-    VertexType VertexList[MAX];
-    EdgeType EdgeMatrix[MAX][MAX];
+    vector<VertexType> VertexList;
+    vector<vector<EdgeType>> EdgeMatrix;
+//    VertexType VertexList[MAX];
+//    EdgeType EdgeMatrix[MAX][MAX];
 public:
     GraphAdjacencyMatrix() {
-        for (int i = 0; i < MAX; ++i) {
-            VertexList[i] = VertexType();
-            for (int j = 0; j < MAX; ++j) {
-//                new (&EdgeMatrix[i][j]) EdgeType(NULL);
-                EdgeMatrix[i][j] = EdgeType();
-            }
-        }
+//        for (int i = 0; i < MAX; ++i) {
+//            VertexList[i] = VertexType();
+//            for (int j = 0; j < MAX; ++j) {
+////                new (&EdgeMatrix[i][j]) EdgeType(NULL);
+//                EdgeMatrix[i][j] = EdgeType();
+//            }
+//        }
     }
 
-    void Insert(EdgeType &_Edge){
-        _Edge.Exist = Existed;
+    void Push(EdgeType &_Edge){
+
         EdgeMatrix[_Edge.FromIndex][_Edge.ToIndex] = _Edge;
         numEdge ++;
 
     }
-    void Insert(VertexType &_Vertex){
-        _Vertex.Exist = Existed;
-        VertexList[numVertex] = _Vertex;
+    void Push(VertexType &_Vertex){
+//        VertexList[numVertex] = _Vertex;
+        vector<EdgeType> _nullEdgeVec;
+        EdgeType _nullEdge;
+
+
+        for (int i = 0; i < numVertex+1; ++i) {
+
+            _nullEdgeVec.push_back(_nullEdge);
+        }
+        for(int i = 0;i<numVertex;i++)
+        {
+            (EdgeMatrix.begin()+i)->push_back(_nullEdge);
+        }
+        EdgeMatrix.push_back(_nullEdgeVec);
+
+        VertexList.push_back(_Vertex);
         numVertex++;
+
     }
 
     void Remove(int FromIndex,int ToIndex){
-        EdgeMatrix[FromIndex][ToIndex].Exist = NotExisted;
+        EdgeMatrix[FromIndex][ToIndex] = EdgeType();
+//        EdgeMatrix[FromIndex][ToIndex].Exist = NotExisted;
     }
 
     void Remove(int VertexIndex){
-        VertexList[VertexIndex].Exist = NotExisted;
+        VertexList.erase(VertexList.begin() + VertexIndex);
         for (int i = 0; i < numVertex; ++i) {
-            EdgeMatrix[VertexIndex][i].Exist = NotExisted;
-            EdgeMatrix[i][VertexIndex].Exist = NotExisted;
+            EdgeMatrix[i].erase(EdgeMatrix[i].begin()+VertexIndex);
         }
+
+        EdgeMatrix.erase(EdgeMatrix.begin()+VertexIndex);
+
+//        VertexList[VertexIndex].Exist = NotExisted;
+//        for (int i = 0; i < numVertex; ++i) {
+//            EdgeMatrix[VertexIndex][i].Exist = NotExisted;
+//            EdgeMatrix[i][VertexIndex].Exist = NotExisted;
+//        }
+        numVertex--;
     }
 
-    bool Exist(int FromIndex, int ToIndex){
-        return EdgeMatrix[FromIndex][ToIndex].Data == -1 ? false : true;
-    }
+//    bool Exist(int FromIndex, int ToIndex){
+//        return EdgeMatrix[FromIndex][ToIndex].Data == -1 ? false : true;
+//    }
 };
 
 
@@ -98,14 +121,14 @@ int main(){
     EdgeType E3 = EdgeType(3,2,0);
 //
 //    GraphAdjacencyMatrix M = GraphAdjacencyMatrix<int>();
-    GraphAdjacencyMatrix M = GraphAdjacencyMatrix<100>();
-    M.Insert(V1);
-    M.Insert(V2);
-    M.Insert(V3);
+    GraphAdjacencyMatrix M = GraphAdjacencyMatrix();
+    M.Push(V1);
+    M.Push(V2);
+    M.Push(V3);
 
-    M.Insert(E1);
-    M.Insert(E2);
-    M.Insert(E3);
+    M.Push(E1);
+    M.Push(E2);
+    M.Push(E3);
 
     M.Remove(2);
     M.Remove(0,1);
