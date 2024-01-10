@@ -165,6 +165,37 @@ build Graph: CXX_EXECUTABLE_LINKER__Graph_Debug CMakeFiles/Graph.dir/Graph.cpp.o
   TARGET_PDB = Graph.dbg
 
 # =============================================================================
+# Object build statements for EXECUTABLE target Sort
+
+
+#############################################
+# Order-only phony target for Sort
+
+build cmake_object_order_depends_target_Sort: phony || CMakeFiles/Sort.dir
+
+build CMakeFiles/Sort.dir/Sort.cpp.o: CXX_COMPILER__Sort_unscanned_Debug /Users/timli/CLionProjects/DataStruct/Sort.cpp || cmake_object_order_depends_target_Sort
+  DEP_FILE = CMakeFiles/Sort.dir/Sort.cpp.o.d
+  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Sort.dir
+  OBJECT_FILE_DIR = CMakeFiles/Sort.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Sort
+
+
+#############################################
+# Link the executable Sort
+
+build Sort: CXX_EXECUTABLE_LINKER__Sort_Debug CMakeFiles/Sort.dir/Sort.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  OBJECT_DIR = CMakeFiles/Sort.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Sort
+  TARGET_PDB = Sort.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target test
 
 
@@ -229,7 +260,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/timli/CLionProjects/DataStruct/cmake-build-debug
 
-build all: phony LinearList BiTree Tree Graph test
+build all: phony LinearList BiTree Tree Graph Sort test
 
 # =============================================================================
 # Built-in targets
