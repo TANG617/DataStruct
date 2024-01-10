@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 using namespace std;
 
 typedef enum {Undiscovered,Discovered,Visited}Vstatus;
@@ -95,7 +96,8 @@ public:
     }
 
     void Visit(VertexType _Vertex){
-        cout<<_Vertex.Data<<endl;
+//        cout<<_Vertex.Data<<endl;
+        printf("%c\n",_Vertex.Data);
     }
 
     void BFS(int RootIndex){
@@ -112,6 +114,11 @@ public:
         VertexList[RootIndex].Status = Visited;
 
         while(!VertexIndexQueue.empty()){
+            if (VertexList[VertexIndexQueue.front()].Status == Undiscovered){
+                Visit(VertexList[VertexIndexQueue.front()]);
+                VertexList[VertexIndexQueue.front()].Status = Visited;
+
+            }
             for (int i = 0; i < numVertex; ++i) {
                 if(VertexList[i].Status == Undiscovered && EdgeMatrix[VertexIndexQueue.front()][i].Data != -1)
                 {
@@ -120,10 +127,30 @@ public:
                 }
 
             }
-            Visit(VertexList[VertexIndexQueue.front()]);
-            VertexList[VertexIndexQueue.front()].Status = Visited;
             VertexIndexQueue.pop();
+
         }
+    }
+
+    void DFS(int RootIndex){
+        stack <int> VertexIndexStack;
+        VertexIndexStack.push(RootIndex);
+        while(!VertexIndexStack.empty()){
+            if (VertexList[VertexIndexStack.top()].Status == Discovered){
+                Visit(VertexList[VertexIndexStack.top()]);
+                VertexList[VertexIndexStack.top()].Status = Visited;
+                VertexIndexStack.pop();
+            }
+            for (int i = 0; i < numVertex; ++i) {
+                if(EdgeMatrix[VertexIndexStack.top()][i].Data != -1 && VertexList[i].Status == Undiscovered)
+                {
+                    VertexIndexStack.push(i);
+                    VertexList[i].Status = Discovered;
+                }
+            }
+
+        }
+
     }
 };
 
@@ -149,23 +176,93 @@ public:
 
 
 int main(){
-    VertexType V1 = VertexType(1);
-    VertexType V2 = VertexType(2);
-    VertexType V3 = VertexType(3);
+    GraphAdjacencyMatrix M = GraphAdjacencyMatrix();
+//    GraphAdjacencyList M = GraphAdjacencyList();
 
-    EdgeType E1 = EdgeType(1,0,1);
-    EdgeType E2 = EdgeType(2,1,2);
-    EdgeType E3 = EdgeType(3,2,0);
+    VertexType VA = VertexType('A'); // 0
+    VertexType VB = VertexType('B'); // 1
+    VertexType VC = VertexType('C'); // 2
+    VertexType VD = VertexType('D'); // 3
+    VertexType VE = VertexType('E'); // 4
+    VertexType VF = VertexType('F'); // 5
+    VertexType VG = VertexType('G'); // 6
+    VertexType VH = VertexType('H'); // 7
+    VertexType VI = VertexType('I'); // 8
+    VertexType VJ = VertexType('J'); // 9
+    VertexType VK = VertexType('K'); // 10
+    VertexType VL = VertexType('L'); // 11
+    VertexType VM = VertexType('M'); // 12
+    VertexType VN = VertexType('N'); // 13
+    VertexType VO = VertexType('O'); // 14
 
-//    GraphAdjacencyMatrix M = GraphAdjacencyMatrix();
-    GraphAdjacencyList M = GraphAdjacencyList();
-    M.Push(V1);
-    M.Push(V2);
-    M.Push(V3);
+    M.Push(VA);
+    M.Push(VB);
+    M.Push(VC);
+    M.Push(VD);
+    M.Push(VE);
+    M.Push(VF);
+    M.Push(VG);
+    M.Push(VH);
+    M.Push(VI);
+    M.Push(VJ);
+    M.Push(VK);
+    M.Push(VL);
+    M.Push(VM);
+    M.Push(VN);
+    M.Push(VO);
 
+// 创建并添加24条边
+    EdgeType E0 = EdgeType(1, 0, 1);
+    EdgeType E1 = EdgeType(1, 0, 2);
+    EdgeType E2 = EdgeType(1, 1, 3);
+    EdgeType E3 = EdgeType(1, 1, 4);
+    EdgeType E4 = EdgeType(1, 2, 5);
+    EdgeType E5 = EdgeType(1, 2, 6);
+    EdgeType E6 = EdgeType(1, 3, 7);
+    EdgeType E7 = EdgeType(1, 3, 8);
+    EdgeType E8 = EdgeType(1, 4, 9);
+    EdgeType E9 = EdgeType(1, 4, 10);
+    EdgeType E10 = EdgeType(1, 4, 11);
+    EdgeType E11 = EdgeType(1, 5, 12);
+    EdgeType E12 = EdgeType(1, 6, 13);
+    EdgeType E13 = EdgeType(1, 6, 14);
+//    EdgeType E14 = EdgeType(1, 14, 0);
+//    EdgeType E15 = EdgeType(1, 0, 2);
+//    EdgeType E16 = EdgeType(1, 1, 3);
+//    EdgeType E17 = EdgeType(1, 2, 4);
+//    EdgeType E18 = EdgeType(1, 3, 5);
+//    EdgeType E19 = EdgeType(1, 4, 6);
+//    EdgeType E20 = EdgeType(1, 5, 7); // F -> H
+//    EdgeType E21 = EdgeType(1, 6, 8); // G -> I
+//    EdgeType E22 = EdgeType(1, 7, 9); // H -> J
+//    EdgeType E23 = EdgeType(1, 8, 10); // I -> K
+
+    M.Push(E0);
     M.Push(E1);
     M.Push(E2);
     M.Push(E3);
+    M.Push(E4);
+    M.Push(E5);
+    M.Push(E6);
+    M.Push(E7);
+    M.Push(E8);
+    M.Push(E9);
+    M.Push(E10);
+    M.Push(E11);
+    M.Push(E12);
+    M.Push(E13);
+//    M.Push(E14);
+//    M.Push(E15);
+//    M.Push(E16);
+//    M.Push(E17);
+//    M.Push(E18);
+//    M.Push(E19);
+//    M.Push(E20);
+//    M.Push(E21);
+//    M.Push(E22);
+//    M.Push(E23);
+
+    M.DFS(0);
 //
 //    M.Remove(2);
 //    M.Remove(0,1);
