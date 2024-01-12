@@ -1,0 +1,105 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.26"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "DataStruct",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "BiTree::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BiTree-Debug-a4fa5523eb75110a6207.json",
+					"name" : "BiTree",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Graph::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Graph-Debug-5500a89e48509acc8f3d.json",
+					"name" : "Graph",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "LinearList::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-LinearList-Debug-6471cebaba01964100bc.json",
+					"name" : "LinearList",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Sort::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Sort-Debug-f5d564868a223df5fcbe.json",
+					"name" : "Sort",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Tree::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Tree-Debug-d63dc21b37dfd6da08ab.json",
+					"name" : "Tree",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test-Debug-62a32798c04d8266cf63.json",
+					"name" : "test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/timli/CLionProjects/DataStruct/cmake-build-debug",
+		"source" : "/Users/timli/CLionProjects/DataStruct"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 5
+	}
+}
